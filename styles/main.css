@@ -48,16 +48,37 @@ nav a {
     padding: 8px;
 }
 main {
-    width: min(1100px, calc(100% - 32px));
-    margin: 24px auto;
+    width: calc(100% - 48px);
+    max-width: 1500px;
+    margin: 32px auto;
     display: grid;
     gap: 28px;
     background-color: white;
-    padding: 20px;
+    padding: 32px;
     border-radius: 12px;
     border: 1px solid #dbe3ed;
     box-shadow: 0 2px 8px rgba(23, 59, 103, 0.06);
+    box-sizing: border-box;
 }
+
+main > section {
+    min-width: 0;
+}
+
+main > section h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#activities {
+    display: grid;
+    gap: 16px;
+}
+
+#activities h2 {
+    margin-bottom: 0;
+}
+
 main section h2 {
     color: #173b67;
     margin-top: 0;
@@ -86,6 +107,15 @@ textarea {
     border: 1px solid #b8c5d6;
     font: inherit;
 }
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid #2878c7;
+    outline-offset: 3px;
+}
+
 button {
     background-color: #173b67;
     color: white;
@@ -116,18 +146,19 @@ button:focus-visible {
 #dashboard {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 20px;
 }
 #dashboard > h2,
 #dashboard > p {
     grid-column: 1 / -1;
 }
 #dashboard > div {
+    padding: 24px;
     background-color: #eef4fb;
-    padding: 16px;
-    border-radius: 8px;
+    border-radius: 10px;
     min-width: 0;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e0e9f4;
 }
 #dashboard > div:hover {
     transform: translateY(-3px);
@@ -146,8 +177,43 @@ button:focus-visible {
 #activity-form {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 20px;
 }
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.form-group label {
+    display: block;
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #b8c7d9;
+    border-radius: 6px;
+    background-color: white;
+    color: #173b67;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+#activity-form button {
+    width: 100%;
+    min-height: 44px;
+    align-self: end;
+}
+
 /* Small mobile screens */
 @media (min-width: 360px) {
     main {
@@ -163,7 +229,11 @@ button:focus-visible {
 
     #activity-form {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        align-items: end;
+        gap: 24px;
+    }
+
+    #activity-form button {
+        width: 100%;
     }
 
     nav ul {
@@ -180,6 +250,7 @@ button:focus-visible {
 
     #activity-form {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
     }
 }
 
